@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 grade-generator.py
 ALU Individual Coding Lab - Grade generator that enforces FA=60 / SA=40 limits,
@@ -56,7 +56,7 @@ def main():
             print("Grade must be between 0 and 100.")
             grade = get_float("Enter Grade (0-100): ")
 
-        # get weight, validate positive and not exceed category remaining quota
+       
         weight = get_float("Enter Weight (positive number): ")
         while weight <= 0:
             print("Weight must be a positive number.")
@@ -90,14 +90,14 @@ def main():
     total_grade = total_fa + total_sa
     gpa = (total_grade / 100.0) * 5.0
 
-    # Determine pass/fail: must score >=50% of each category's total weight
-    required_fa = FA_LIMIT * 0.5  # i.e., 50% of FA limit (30 if FA_LIMIT=60)
-    required_sa = SA_LIMIT * 0.5  # i.e., 50% of SA limit (20 if SA_LIMIT=40)
+    
+    required_fa = FA_LIMIT * 0.5  
+    required_sa = SA_LIMIT * 0.5  
     pass_fa = total_fa >= required_fa - 1e-9
     pass_sa = total_sa >= required_sa - 1e-9
     status = "PASSED" if (pass_fa and pass_sa) else "FAILED"
 
-    # ALU-style Console Summary (matches screenshot)
+    
     print("\n--- RESULTS ---")
     print(f"Total Formative: {total_fa:.2f} / {FA_LIMIT:.0f}")
     print(f"Total Summative: {total_sa:.2f} / {SA_LIMIT:.0f}")
