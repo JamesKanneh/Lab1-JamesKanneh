@@ -1,21 +1,26 @@
-
 """
 grade-generator.py
-ALU Individual Coding Lab - Grade generator that enforces FA=60 / SA=40 limits,
-prints ALU-style summary and writes grades.csv.
+Student Grade Generator - enforces FA=60 / SA=40 limits,
+prints summary and writes grades.csv.
 """
 
 import csv
+from dataclasses import dataclass
 
 FA_LIMIT = 60.0
 SA_LIMIT = 40.0
 
+@dataclass
 class Assignment:
-    def __init__(self, name, category, grade, weight):
-        self.name = name
-        self.category = category.upper()
-        self.grade = float(grade)
-        self.weight = float(weight)
+    name: str
+    category: str
+    grade: float
+    weight: float
+
+    def __post_init__(self):
+        self.category = self.category.upper()
+        self.grade = float(self.grade)
+        self.weight = float(self.weight)
 
     def weighted_grade(self):
         return (self.grade / 100.0) * self.weight
@@ -27,13 +32,12 @@ def get_float(prompt):
     while True:
         val = input(prompt).strip()
         try:
-            f = float(val)
-            return f
+            return float(val)
         except ValueError:
             print("Please enter a valid number.")
 
 def main():
-    print("\n--- Student Grade Generator (ALU) ---\n")
+    print("\n--- Student Grade Generator ---\n")
 
     assignments = []
     total_fa_weight = 0.0

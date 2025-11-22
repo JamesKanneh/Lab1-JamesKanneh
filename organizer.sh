@@ -1,5 +1,4 @@
-#!/bin/bash
-# organizer.sh - archives .csv files into ./archive and logs actions to organizer.log
+
 
 ARCHIVE_DIR="archive"
 LOG_FILE="organizer.log"
